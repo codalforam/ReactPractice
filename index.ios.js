@@ -25,8 +25,10 @@ const styles = StyleSheet.create({
   },
   welcome: {
     fontSize: 20,
-    textAlign: 'left',
-    margin: 10,
+    textAlign: 'center',
+    backgroundColor: '#b32401',
+    color: '#dac6ad',
+    margin: 20,
   },
   instructions: {
     textAlign: 'left',
@@ -67,7 +69,9 @@ const styles = StyleSheet.create({
    loading: {
        flex: 1,
        alignItems: 'center',
-       justifyContent: 'center'
+       justifyContent: 'center',
+    backgroundColor: '#dac6ad',
+    color: '#b32401',
    }
 });
 
@@ -131,10 +135,16 @@ export default class AwesomeProject extends Component {
        }
 
     return (
-            <ListView
+        <View>
+	            <Text style={styles.welcome}>
+	                Google Book List
+	            </Text>
+                  <ListView
                 dataSource={this.state.dataSource}
                 renderRow={this.renderBook.bind(this)}
                 style={styles.listView} />
+	    </View>
+
         );
 
     // return (
@@ -167,7 +177,7 @@ export default class AwesomeProject extends Component {
   renderLoadingView() {
 	    return (
 	        <View style={styles.loading}>
-	            <Text>
+                <Text>
 	                Please wait...
 	            </Text>
 	        </View>
@@ -176,8 +186,9 @@ export default class AwesomeProject extends Component {
 
   renderBook(book) {
        return (
+            
             <TouchableHighlight>
-                <View style={styles.container}>
+             <View style={styles.container}>
                      <View style={styles.rightContainer}>
                             <Text style={styles.title}>{book.volumeInfo.title}</Text>
                             <Text style={styles.author}>{book.volumeInfo.authors}</Text>
